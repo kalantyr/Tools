@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Threading;
+using System.Drawing;
 using System.Windows;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
+using Timer = System.Threading.Timer;
 
 namespace ClipboardTool
 {
 	public partial class MainWindow
 	{
-		private Timer _timer;
-		private readonly ClipboardListener _listener = new ClipboardListener();
-
 		private static readonly TimeSpan TimerPeriod = TimeSpan.FromSeconds(1);
+
+		private readonly ClipboardListener _listener = new ClipboardListener();
 		private readonly ObservableCollection<ListItem> _itemsSource = new ObservableCollection<ListItem>();
+		private NotifyIcon _notifyIcon;
+		private Timer _timer;
 
 		public MainWindow()
 		{
@@ -22,8 +26,36 @@ namespace ClipboardTool
 
 			Loaded += (sender, e) =>
 			{
+				_notifyIcon = new NotifyIcon
+				{
+					Icon = new Icon(@"C:\GitHub\Tools\ClipboardTool\Clipboard.ico")
+				};
+				_notifyIcon.Click += (sender1, e1) =>
+				{
+					WindowState = WindowState.Normal;
+				};
+
 				_timer = new Timer(OnTimer, null, TimeSpan.Zero, TimerPeriod);
 			};
+
+			StateChanged += MainWindow_StateChanged;
+		}
+
+		private void MainWindow_StateChanged(object sender, EventArgs e)
+		{
+			switch (WindowState)
+			{
+				case WindowState.Minimized:
+					ShowInTaskbar = false;
+					_notifyIcon.Visible = true;
+					break;
+				default:
+					_notifyIcon.Visible = false;
+					ShowInTaskbar = true;
+					Topmost = true;
+					Topmost = false;
+					break;
+			}
 		}
 
 		private void OnAddDataObject(string text)
