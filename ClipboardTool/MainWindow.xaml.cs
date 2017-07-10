@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
@@ -28,7 +27,7 @@ namespace ClipboardTool
 			{
 				_notifyIcon = new NotifyIcon
 				{
-					Icon = new Icon(@"C:\GitHub\Tools\ClipboardTool\Clipboard.ico")
+					Icon = Properties.Resources.Clipboard
 				};
 				_notifyIcon.Click += (sender1, e1) =>
 				{
