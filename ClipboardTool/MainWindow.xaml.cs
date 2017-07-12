@@ -106,7 +106,7 @@ namespace ClipboardTool
 			if (MessageBox.Show(this, "Clear?", "?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 			{
 				_listener.Clear();
-				_itemsSource.Clear();
+				RefreshListBox();
 			}
 		}
 

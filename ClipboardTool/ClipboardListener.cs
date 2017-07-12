@@ -29,6 +29,7 @@ namespace ClipboardTool
 
 		public void Clear()
 		{
+			_texts.Clear();
 		}
 	}
 }
