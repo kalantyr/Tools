@@ -1,0 +1,62 @@
+﻿<UserControl
+    x:Class="Kalantyr.SizeScanner.UserControls.ExtensionsAnalysisControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:SizeScanner="clr-namespace:Kalantyr.SizeScanner" xmlns:UserControls="clr-namespace:Kalantyr.SizeScanner.UserControls">
+    
+    <UserControl.Resources>
+        <SizeScanner:FileSizeConverter x:Key="fileSizeConverter"/>
+        <SizeScanner:SizeToColorConverter x:Key="sizeToColorConverter"/>
+        <UserControls:IntToStringConverter x:Key="intToStringConverter"/>
+    </UserControl.Resources>
+    
+    <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+		<DataGrid.ContextMenu>
+			<ContextMenu>
+				<MenuItem Header="Файлы..." Click="MenuItem_Files_Click"/>
+				<MenuItem Header="Удалить" Click="MenuItem_Remove_Click"/>
+			</ContextMenu>
+		</DataGrid.ContextMenu>
+
+		<DataGrid.Columns>
+
+            <DataGridTemplateColumn Header="Расширение" SortMemberPath="Name">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTemplateColumn Header="Количество" SortMemberPath="Count">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Count, Converter={StaticResource intToStringConverter}}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTemplateColumn Header="Суммарный размер" SortMemberPath="SumSize">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding SumSize, Converter={StaticResource fileSizeConverter}}"
+									   FontWeight="Bold"
+									   Foreground="{Binding SumSize, Converter={StaticResource sizeToColorConverter}}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+			<DataGridTemplateColumn Header="Средний размер" SortMemberPath="AverageSize">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding AverageSize, Converter={StaticResource fileSizeConverter}}"
+									   FontWeight="Bold"
+									   Foreground="{Binding AverageSize, Converter={StaticResource sizeToColorConverter}}"/>
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+
+		</DataGrid.Columns>
+		
+    </DataGrid>
+</UserControl>

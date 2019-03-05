@@ -1,0 +1,89 @@
+﻿<Window
+	x:Class="Kalantyr.SizeScanner.MainWindow"
+	Title="Определитель объема папок"
+	Height="640" Width="640"
+	WindowStartupLocation="CenterScreen"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sizeScanner="clr-namespace:Kalantyr.SizeScanner"
+	xmlns:UserControls="clr-namespace:Kalantyr.SizeScanner.UserControls"
+	Icon="Resources\Icon.ico">
+	
+	<Window.Resources>
+		<sizeScanner:FileSizeConverter x:Key="fileSizeConverter"/>
+		<sizeScanner:FolderToolTipConverter x:Key="folderToolTipConverter"/>
+		<sizeScanner:IsEnabledConverter x:Key="isEnabledConverter"/>
+		<sizeScanner:SizeToColorConverter x:Key="sizeToColorConverter"/>
+	</Window.Resources>
+    
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo/>
+    </Window.TaskbarItemInfo>
+	
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<StackPanel Grid.ColumnSpan="2" Margin="5, 0, 0, 0">
+			<TextBlock Text="Папка для сканирования:" IsEnabled="{Binding IsIdle}"/>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<TextBox Text="{Binding TargetPath, Mode=TwoWay}" IsEnabled="{Binding IsIdle}" VerticalAlignment="Center"/>
+				<Button Content="Обзор..." Style="{StaticResource Кнопка}" Grid.Column="1" IsEnabled="{Binding IsIdle}" Click="BrowseButton_Click"/>
+			</Grid>
+			<WrapPanel HorizontalAlignment="Center">
+				<Button Content="Старт" Style="{StaticResource Кнопка}" Click="StartButton_Click"
+					IsEnabled="{Binding IsIdle}"/>
+				<Button Content="Стоп" Style="{StaticResource Кнопка}"
+					IsEnabled="{Binding IsScanning}" Click="ButtonStop_Click" />
+				<Button Content="Очистить" Style="{StaticResource Кнопка}"
+					IsEnabled="{Binding IsIdle}" Click="ButtonClear_Click" />
+			</WrapPanel>
+		</StackPanel>
+		
+		<TreeView Grid.Row="1" ItemsSource="{Binding ScanResultView}" Margin="5" SelectedItemChanged="TreeView_SelectedItemChanged">
+			<TreeView.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Открыть..." Click="MenuItem_OpenFolder_Click"
+							  IsEnabled="{Binding SelectedFolder, Converter={StaticResource isEnabledConverter}}"/>
+					<MenuItem Header="Удалить" Click="MenuItem_Delete_Click"
+							  IsEnabled="{Binding SelectedFolder, Converter={StaticResource isEnabledConverter}}"/>
+                    <MenuItem Header="Анализ"
+							  IsEnabled="{Binding SelectedFolder, Converter={StaticResource isEnabledConverter}}">
+                        <MenuItem Header="По расширениям..." Click="MenuItem_ExtensionsAnalysis_Click"
+							  IsEnabled="{Binding SelectedFolder, Converter={StaticResource isEnabledConverter}}"/>
+                    </MenuItem>
+                </ContextMenu>
+			</TreeView.ContextMenu>
+			<TreeView.ItemTemplate>
+				<HierarchicalDataTemplate ItemsSource="{Binding FoldersView}">
+					<Border ToolTipService.ToolTip="{Binding Converter={StaticResource folderToolTipConverter}}">
+						<WrapPanel>
+							<TextBlock Text="{Binding DirectoryInfo.Name}"/>
+							<TextBlock Text="{Binding Size, Converter={StaticResource fileSizeConverter}}"
+									   Margin="15, 0, 0, 0" FontWeight="Bold"
+									   Foreground="{Binding Size, Converter={StaticResource sizeToColorConverter}}"/>
+						</WrapPanel>
+					</Border>
+				</HierarchicalDataTemplate>
+			</TreeView.ItemTemplate>			
+		</TreeView>
+
+		<UserControls:FilesControl Grid.Row="1" Grid.Column="1" Margin="5"
+								   ItemsSource="{Binding SelectedFolder.Files}"/>
+		
+		<TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="5"
+				   Text="{Binding ScanningFolder.DirectoryInfo.FullName}"/>
+		
+	</Grid>
+</Window>

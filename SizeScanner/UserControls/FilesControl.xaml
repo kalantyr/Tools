@@ -1,0 +1,69 @@
+﻿<UserControl
+	x:Class="Kalantyr.SizeScanner.UserControls.FilesControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sizeScanner="clr-namespace:Kalantyr.SizeScanner">
+	
+	<UserControl.Resources>
+		<sizeScanner:FileSizeConverter x:Key="fileSizeConverter"/>
+		<sizeScanner:IsEnabledConverter x:Key="isEnabledConverter"/>
+		<sizeScanner:SizeToColorConverter x:Key="sizeToColorConverter"/>
+	</UserControl.Resources>
+	
+	<DataGrid x:Name="dataGrid"
+		ItemsSource="{Binding SelectedFolder.Files}" SelectionMode="Extended"
+		AutoGenerateColumns="False"
+		HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+		SelectionChanged="DataGrid_SelectionChanged">
+		<DataGrid.ContextMenu>
+			<ContextMenu>
+				<MenuItem Header="Открыть..." Click="MenuItem_OpenFile_Click"
+							  IsEnabled="{Binding SelectedFile, Converter={StaticResource isEnabledConverter}}"/>
+				<MenuItem Header="Открыть папку..." Click="MenuItem_OpenDirectory_Click"
+							  IsEnabled="{Binding SelectedFile, Converter={StaticResource isEnabledConverter}}"/>
+				<MenuItem Header="Копировать в 'C:\Temp\CopyTo'" Click="MenuItem_CopyTo_Click"
+							  IsEnabled="{Binding SelectedFiles, Converter={StaticResource isEnabledConverter}}"/>
+				<MenuItem Header="Удалить" Click="MenuItem_Delete_Click"
+							  IsEnabled="{Binding SelectedFiles, Converter={StaticResource isEnabledConverter}}"/>
+			</ContextMenu>
+		</DataGrid.ContextMenu>
+		<DataGrid.Columns>
+
+			<DataGridTemplateColumn Header="Название" SortMemberPath="Name">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}"/>
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+
+			<DataGridTemplateColumn Header="Размер" SortMemberPath="Length" SortDirection="Descending">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Length, Converter={StaticResource fileSizeConverter}}"
+									   FontWeight="Bold"
+									   Foreground="{Binding Length, Converter={StaticResource sizeToColorConverter}}"/>
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+
+			<DataGridTemplateColumn Header="Расширение" SortMemberPath="Extension">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Extension}"/>
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+
+			<DataGridTemplateColumn Header="Папка" SortMemberPath="Directory.FullName">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Directory.FullName}"/>
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+
+		</DataGrid.Columns>
+
+	</DataGrid>
+</UserControl>

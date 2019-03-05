@@ -1,0 +1,9 @@
+﻿<Window
+    x:Class="Kalantyr.SizeScanner.AnalysisWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="400" Width="300" Icon="/Kalantyr.SizeScanner;component/Resources/Icon.ico" ResizeMode="CanResizeWithGrip" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+    <Grid>
+        
+    </Grid>
+</Window>
