@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Forms;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.MessageBox;
 using Timer = System.Threading.Timer;
 
@@ -113,6 +114,11 @@ namespace ClipboardTool
 		private void OnSearchTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
 		{
 			RefreshListBox();
+		}
+
+		private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
+		{
+			_tbSearch.Focus();
 		}
 	}
 

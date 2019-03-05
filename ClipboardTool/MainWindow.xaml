@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Icon="Clipboard.ico"
         mc:Ignorable="d"
-        Title="Clipboard tool" Height="350" Width="525">
+        Title="Clipboard tool" Height="350" Width="525"
+		KeyDown="MainWindow_OnKeyDown">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="0.3334*"/>

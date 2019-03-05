@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SizeScanner", "SizeScanner\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileRenamer", "FileRenamer\FileRenamer.csproj", "{3CBF8266-D027-4699-B326-A0C241A45F83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timer", "Timer\Timer.csproj", "{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{3CBF8266-D027-4699-B326-A0C241A45F83}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3CBF8266-D027-4699-B326-A0C241A45F83}.Release|x86.ActiveCfg = Release|Any CPU
 		{3CBF8266-D027-4699-B326-A0C241A45F83}.Release|x86.Build.0 = Release|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Debug|x86.Build.0 = Debug|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Release|x86.ActiveCfg = Release|Any CPU
+		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
