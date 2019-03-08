@@ -1,0 +1,13 @@
+﻿<Application x:Class="ScreenClock.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="MainWindow.xaml">
+
+	<Application.Resources>
+
+		<SolidColorBrush x:Key="FillColor" Color="#20FFFFFF"/>
+		<SolidColorBrush x:Key="StrokeColor" Color="#40FFFFFF"/>
+		
+	</Application.Resources>
+	
+</Application>

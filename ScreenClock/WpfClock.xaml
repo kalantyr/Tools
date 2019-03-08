@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="ScreenClock.WpfClock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="1024" Width="1024">
+    
+    <UserControl.Resources>
+        <Style x:Key="ArrowStyle" TargetType="Path">
+			<Setter Property="Fill" Value="{StaticResource FillColor}"/>
+            <Setter Property="Stroke" Value="{StaticResource StrokeColor}"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+
+        <Canvas x:Name="Divisions" Width="0" Height="0"/>
+
+        <Canvas Width="0" Height="0">
+            <Canvas.RenderTransform>
+                <RotateTransform x:Name="HourArrowRotate"/>
+            </Canvas.RenderTransform>
+            <Path Style="{StaticResource ArrowStyle}" Stretch="Fill" Data="M537.2742,537.00275 L487.72581,537.00273 512.49998,215.2541 z" Canvas.Top="-289" Canvas.Left="-25" Width="50" Height="322"/>
+        </Canvas>
+
+        <Canvas Width="0" Height="0">
+            <Canvas.RenderTransform>
+                <RotateTransform x:Name="MinuteArrowRotate"/>
+            </Canvas.RenderTransform>
+            <Path Style="{StaticResource ArrowStyle}" Stretch="Fill" Data="M529.01611,537.00146 L495.98386,537.00146 512.49998,135.83528 z" Canvas.Top="-369" Canvas.Left="-17" Width="34" Height="402"/>
+        </Canvas>
+        
+        <Canvas Width="0" Height="0">
+            <Canvas.RenderTransform>
+                <RotateTransform x:Name="SecondArrowRotate"/>
+            </Canvas.RenderTransform>
+            <Path Style="{StaticResource ArrowStyle}" Stretch="Fill" Data="M520.75806,537.00098 L504.24193,537.00098 512.5,24.5 z" Canvas.Top="-480.5" Canvas.Left="-9" Width="18" Height="513.5"/>
+        </Canvas>
+        
+    </Grid>
+</UserControl>

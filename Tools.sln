@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileRenamer", "FileRenamer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timer", "Timer\Timer.csproj", "{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenClock", "ScreenClock\ScreenClock.csproj", "{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Release|x86.ActiveCfg = Release|Any CPU
 		{F19AFF53-CA84-45BD-AD52-4F83CE9F1FBD}.Release|x86.Build.0 = Release|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Debug|x86.Build.0 = Debug|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Release|x86.ActiveCfg = Release|Any CPU
+		{9344E08B-DAC7-4C9F-A1C7-C44DE1A63B95}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
