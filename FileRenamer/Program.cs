@@ -35,7 +35,7 @@ namespace FileRenamer
 
             foreach (var renameRule in rules)
                 foreach (var fileInfo in rootFoler.GetFiles())
-                    try`
+                    try
                     {
                         var newName = renameRule.Apply(fileInfo);
                         if (newName != fileInfo.FullName)
