@@ -1,0 +1,28 @@
+﻿<Window x:Class="FolderSizeScanner.Windows.SelectFolderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select folder" Height="150" Width="400" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Folder: "/>
+            <TextBox x:Name="_tbFolder" Grid.Column="1"/>
+            <Button x:Name="_btnBrowse" Content="..." Grid.Column="2" Click="OnBrowseClick"/>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource OkButton}" Click="OnOkClick"/>
+            <Button Style="{StaticResource CancelButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>

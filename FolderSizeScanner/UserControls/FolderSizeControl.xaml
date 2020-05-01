@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="FolderSizeScanner.UserControls.FolderSizeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding Path='Root.FullName', Mode=OneTime}" Style="{StaticResource ReadonlyText}"/>
+            <Button Content="Open..." Grid.Column="1" Click="OnOpenClick"/>
+            <Button Content="[X]" Grid.Column="2" Click="OnCloseClick"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,7 @@
+﻿<Window x:Class="FolderSizeScanner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Folder size scanner" Height="450" Width="800">
+    <TabControl x:Name="_tabControl">
+    </TabControl>
+</Window>
