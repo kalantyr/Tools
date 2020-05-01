@@ -7,6 +7,8 @@ namespace FolderSizeScanner.UserControls
 {
     public partial class FolderSizeControl
     {
+        private Scanner _scanner;
+
         public ScanContext ScanContext => DataContext as ScanContext;
 
         public Action<ScanContext> RequestClose;
@@ -14,6 +16,46 @@ namespace FolderSizeScanner.UserControls
         public FolderSizeControl()
         {
             InitializeComponent();
+            TuneControls();
+            Loaded += FolderSizeControl_Loaded;
+        }
+
+        private void FolderSizeControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ScanContext != null)
+                Start();
+        }
+
+        private void Start()
+        {
+            ScanContext.Result = new ScanResult(ScanContext.Root.FullName);
+
+            _scanner = new Scanner(ScanContext)
+            {
+                Completed = sc =>
+                {
+                    _scanner = null;
+                    TuneControls();
+                }
+            };
+            _scanner.Start();
+            TuneControls();
+        }
+
+        private void Stop()
+        {
+            _scanner?.Stop();
+        }
+
+        private void TuneControls()
+        {
+            if (!Dispatcher.CheckAccess())
+            {
+                Dispatcher.Invoke(TuneControls);
+                return;
+            }
+
+            _btnStartStop.Content = _scanner == null || _scanner.ScanIsCompletted ? "Start" : "Stop";
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
@@ -32,6 +74,14 @@ namespace FolderSizeScanner.UserControls
                 UseShellExecute = true,
                 WorkingDirectory = ScanContext.Root.FullName
             });
+        }
+
+        private void OnStartStopClick(object sender, RoutedEventArgs e)
+        {
+            if (_scanner == null)
+                Start();
+            else
+                Stop();
         }
     }
 }

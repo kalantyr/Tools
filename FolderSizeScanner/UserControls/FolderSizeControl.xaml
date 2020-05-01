@@ -10,13 +10,15 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox Text="{Binding Path='Root.FullName', Mode=OneTime}" Style="{StaticResource ReadonlyText}"/>
-            <Button Content="Open..." Grid.Column="1" Click="OnOpenClick"/>
-            <Button Content="[X]" Grid.Column="2" Click="OnCloseClick"/>
+            <Button x:Name="_btnStartStop" Content="Start" Click="OnStartStopClick" Style="{StaticResource DefaultButton}"/>
+            <TextBox Text="{Binding Path='Root.FullName', Mode=OneTime}" Grid.Column="1" Style="{StaticResource ReadonlyText}"/>
+            <Button Content="Open..." Grid.Column="2" Click="OnOpenClick" Style="{StaticResource DefaultButton}"/>
+            <Button Content="[X]" Grid.Column="3" Click="OnCloseClick" Style="{StaticResource DefaultButton}" MinWidth="25"/>
         </Grid>
     </Grid>
 </UserControl>
